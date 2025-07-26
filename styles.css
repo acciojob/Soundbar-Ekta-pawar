@@ -1,1 +1,25 @@
-/*  your css code here. If applicable */
+
+
+/* Container for all buttons */
+#buttons {
+  display: flex;
+  align-items:center;
+  gap: 1rem;
+	  background-color: #f0f6;
+	height:100vh;
+	padding:10px;
+
+
+
+}
+
+/* Base styling for play buttons */
+.btn {
+  background-color: #f0f;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 1rem 1.0rem;
+
+}
+
