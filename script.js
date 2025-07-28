@@ -16,7 +16,7 @@ sounds.forEach(sound => {
 
   const audio = document.createElement('audio');
   audio.id = sound;
-  audio.src = sounds/${sound}.mp3;
+  audio.src = `sounds/${sound}.mp3`;
   document.body.appendChild(audio);
 });
 
