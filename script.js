@@ -1,32 +1,36 @@
-const sounds = ['sound1', 'sound2', 'sound3'];
+//your JS code here. If required.
+const sounds = ['applause', 'boo', 'gasp', 'tada', 'victory', 'wrong'];
 
-// Select the container that holds the buttons
-const container = document.querySelector(".buttons");
+const buttonsContainer = document.getElementById('buttons');
 
-// Dynamically create buttons and add event listeners
-sounds.forEach((sound) => {
-  const btn = document.createElement("button");
+sounds.forEach(sound => {
+  const btn = document.createElement('button');
+  btn.className = 'btn';
   btn.innerText = sound;
-  btn.classList.add("btn");
-
-  btn.addEventListener("click", function () {
-    const audio = new Audio(`sounds/${sound}.mp3`);
-    audio.play();
+  btn.addEventListener('click', () => {
+    stopSounds();
+    document.getElementById(sound).play();
   });
 
-  container.appendChild(btn);
+  buttonsContainer.appendChild(btn);
+
+  const audio = document.createElement('audio');
+  audio.id = sound;
+  audio.src = sounds/${sound}.mp3;
+  document.body.appendChild(audio);
 });
 
-// Optional: Stop button logic (stops all sounds by pausing them)
-const stopBtn = document.querySelector(".stop");
+const stopBtn = document.createElement('button');
+stopBtn.className = 'stop';
+stopBtn.innerText = 'stop';
+stopBtn.addEventListener('click', stopSounds);
 
-if (stopBtn) {
-  stopBtn.addEventListener("click", () => {
-    // This won't stop already created Audio unless you keep track of them
-    // Here's a better approach using a global variable
-    if (window.currentAudio) {
-      window.currentAudio.pause();
-      window.currentAudio.currentTime = 0;
-    }
+buttonsContainer.appendChild(stopBtn);
+
+function stopSounds() {
+  sounds.forEach(sound => {
+    const audio = document.getElementById(sound);
+    audio.pause();
+    audio.currentTime = 0;
   });
 }
